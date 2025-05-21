@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: python-flask-app
+    runtime: python
+    region: oregon  # or frankfurt, depending on your location
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:5000 main:app
+    env: python
+    plan: free
+    branch: main
+    autoDeploy: true
+
+    envVars:
+      - key: PORT
+        value: 5000
+
+    healthCheckPath: /
+    numInstances: 1
+
+    # Expose port
+    ports:
+      - port: 5000
+        protocol: http
