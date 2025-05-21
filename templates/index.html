@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Coding Competition - Bandaranayake College Gampaha{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-5">
+    <div class="col-md-6">
+        <h1 class="display-4 fw-bold text-primary">බණ්ඩාරනායක විද්‍යාලය | Bandaranayake College</h1>
+        <h2 class="display-5 mb-4">කේත කරණ තරඟාවලිය | Coding Competition</h2>
+        <p class="lead mb-4">
+            ගම්පහ බණ්ඩාරනායක විද්‍යාලයීය පරිගණක සමාජය මගින් සංවිධානය කරනු ලබන කේත කරණ තරඟාවලිය සඳහා සාදරයෙන් පිළිගනිමු.<br>
+            Welcome to the official web platform for the Coding Competition organized by the Bandaranayake College Gampaha Coding Club.<br><br>
+            මෙම වෙබ් අඩවිය හරහා ඔබට ලියාපදිංචි වීමට, නීති රීති දැන ගැනීමට සහ ව්‍යාපෘති ඉදිරිපත් කිරීමට හැකිය.<br>
+            This platform helps you register, understand the rules, and submit your projects.
+        </p>
+    </div>
+    <div class="col-md-6 text-center">
+        <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="120" fill="#f8f9fa" stroke="#0d6efd" stroke-width="5"/>
+            <path d="M100,140 L120,160 L160,120" stroke="#0d6efd" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M180,140 C180,140 200,160 200,180 C200,200 180,220 160,220 C140,220 120,200 120,180 C120,160 140,140 160,140" stroke="#212529" stroke-width="8" fill="none"/>
+            <path d="M150,80 L150,120 M130,100 L170,100" stroke="#212529" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+    </div>
+</div>
+
+<div class="row text-center mb-5">
+    <div class="col-12">
+        <h3 class="mb-4">How to Participate</h3>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-book mb-3 text-primary"></i></h3>
+                <h5 class="card-subtitle mb-2">Read Rules</h5>
+                <p class="card-text">Understand the competition rules, guidelines, and judging criteria for your grade level.</p>
+                <a href="{{ url_for('rules') }}" class="btn btn-primary btn-lg mt-3 w-100">Read Rules & Guidelines</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-user-plus mb-3 text-primary"></i></h3>
+                <h5 class="card-subtitle mb-2">Register</h5>
+                <p class="card-text">Complete the registration form with your team information to enter the competition.</p>
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg mt-3 w-100">Registration Form</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-upload mb-3 text-primary"></i></h3>
+                <h5 class="card-subtitle mb-2">Submit</h5>
+                <p class="card-text">Upload your project code and presentation files before the deadline.</p>
+                <a href="{{ url_for('submit') }}" class="btn btn-primary btn-lg mt-3 w-100">Submit Your Project</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card border-0 bg-light">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">About the Competition</h3>
+                <p class="card-text">
+                    This competition is designed to challenge students from grades 6 to 10 to develop creative and functional software projects.
+                    Participants can use various programming languages depending on their grade level, from Scratch for beginners to more advanced
+                    languages like Python, JavaScript, and Java for senior students.
+                </p>
+                <p class="card-text">
+                    Projects will be judged based on creativity, functionality, UI design, code cleanliness, and presentation.
+                    Winners will receive awards, and all participants will receive certificates of participation.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}{% endblock %}

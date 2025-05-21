@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Registered Participants - Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4 text-primary">Registered Participants</h1>
+        <p class="lead mb-4">View and filter all registrations by school or grade level.</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Filter Options</h5>
+            </div>
+            <div class="card-body">
+                <form id="filterForm" method="GET" class="row g-3">
+                    <div class="col-md-3">
+                        <label for="grade" class="form-label">Grade</label>
+                        <select class="form-select" id="grade" name="grade">
+                            <option value="">All Grades</option>
+                            <option value="6" {% if request.args.get('grade') == '6' %}selected{% endif %}>Grade 6</option>
+                            <option value="7" {% if request.args.get('grade') == '7' %}selected{% endif %}>Grade 7</option>
+                            <option value="8" {% if request.args.get('grade') == '8' %}selected{% endif %}>Grade 8</option>
+                            <option value="9" {% if request.args.get('grade') == '9' %}selected{% endif %}>Grade 9</option>
+                            <option value="10" {% if request.args.get('grade') == '10' %}selected{% endif %}>Grade 10</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="school_id" class="form-label">School</label>
+                        <select class="form-select" id="school_id" name="school_id">
+                            <option value="">All Schools</option>
+                            {% for school in schools %}
+                                <option value="{{ school.id }}" {% if request.args.get('school_id') == school.id|string %}selected{% endif %}>{{ school.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="search" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="search" name="search" placeholder="Name or school" value="{{ request.args.get('search', '') }}">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Results ({{ registrations|length }} participants)</h4>
+            <div>
+                <a href="{{ url_for('export_participants') }}" class="btn btn-success">
+                    <i class="fas fa-file-csv me-2"></i> Export to CSV
+                </a>
+            </div>
+        </div>
+        
+        {% if registrations %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Grade</th>
+                            <th>School</th>
+                            <th>Team Size</th>
+                            <th>Registration Date</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for registration in registrations %}
+                        <tr>
+                            <td>{{ registration.id }}</td>
+                            <td>{{ registration.full_name }}</td>
+                            <td>Grade {{ registration.grade }}</td>
+                            <td>{{ registration.school.name }}</td>
+                            <td>{{ registration.team_members_count }}</td>
+                            <td>{{ registration.registration_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-info view-details" data-id="{{ registration.id }}">
+                                    <i class="fas fa-eye"></i> View Details
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                No registrations found matching your criteria.
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<!-- Participant Details Modal -->
+<div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="participantModalLabel">Participant Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="participantDetails">
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

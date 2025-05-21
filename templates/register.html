@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Form - Coding Competition{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4 text-primary">ලියාපදිංචි පත්‍රය | Registration Form</h1>
+        <p class="lead mb-4">කරුණාකර තරඟය සඳහා ලියාපදිංචි වීමට පහත පෝරමය පුරවන්න. තරු ලකුණින් (*) සටහන් කර ඇති කොටස් අනිවාර්ය වේ.<br>Please fill out the form below to register for the competition. Required fields are marked with an asterisk (*).</p>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" id="registrationForm">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h4>Participant Information</h4>
+                            <hr>
+                            
+                            <div class="mb-3">
+                                <label for="full_name" class="form-label">Full Name *</label>
+                                {{ form.full_name(class="form-control", placeholder="Enter your full name") }}
+                                {% if form.full_name.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.full_name.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="grade" class="form-label">Grade *</label>
+                                {{ form.grade(class="form-control") }}
+                                {% if form.grade.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.grade.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="whatsapp_number" class="form-label">WhatsApp Number *</label>
+                                {{ form.whatsapp_number(class="form-control", placeholder="Enter your WhatsApp number") }}
+                                {% if form.whatsapp_number.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.whatsapp_number.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                <div class="form-text">Please include country code (e.g., +94)</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="school_id" class="form-label">School *</label>
+                                {{ form.school_id(class="form-control") }}
+                                {% if form.school_id.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.school_id.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h4>Team Information</h4>
+                            <hr>
+                            
+                            <div class="mb-3">
+                                <label for="team_members_count" class="form-label">Team Members Count *</label>
+                                {{ form.team_members_count(class="form-control", id="teamMembersCount") }}
+                                {% if form.team_members_count.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.team_members_count.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div id="teamMembersContainer">
+                                <!-- Team members will be added here dynamically based on team size selection -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4" id="societyInfoSection">
+                        <div class="col-12">
+                            <h4>Society Information (Optional)</h4>
+                            <hr>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="society_name" class="form-label">Society Name</label>
+                                        {{ form.society_name(class="form-control", placeholder="Enter your society name") }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="president_name" class="form-label">President Name</label>
+                                        {{ form.president_name(class="form-control", placeholder="Enter president's name") }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="president_number" class="form-label">President Number</label>
+                                        {{ form.president_number(class="form-control", placeholder="Enter president's contact number") }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="teacher_name" class="form-label">Teacher Name</label>
+                                        {{ form.teacher_name(class="form-control", placeholder="Enter teacher's name") }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="teacher_number" class="form-label">Teacher In-Charge Number</label>
+                                        {{ form.teacher_number(class="form-control", placeholder="Enter teacher's contact number") }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">I agree to the rules and guidelines of the competition *</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-lg ms-2">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}

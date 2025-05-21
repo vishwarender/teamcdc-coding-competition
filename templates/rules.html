@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}Rules & Guidelines - Coding Competition{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4 text-primary">කේත කරණ තරඟාවලිය - නීති සහ මාර්ගෝපදේශ | Coding Competition – Rules & Guidelines</h1>
+        <h4 class="mb-5 text-muted">බණ්ඩාරනායක විද්‍යාලයීය පරිගණක සමාජය විසින් සංවිධානය කරන ලදී | Organized by Bandaranayake College Coding Club</h4>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="accordion" id="rulesAccordion">
+            <!-- Rule 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <strong>1. Age Groups and Programming Languages</strong>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex"><span class="badge bg-primary me-2">Grade 6</span>Projects should be built using visual programming languages such as Scratch or Blockly.</li>
+                            <li class="list-group-item d-flex"><span class="badge bg-primary me-2">Grade 7</span>Scratch or HTML + CSS (via visual tools).</li>
+                            <li class="list-group-item d-flex"><span class="badge bg-primary me-2">Grade 8</span>HTML, CSS, JavaScript (basic) or Python (Turtle/GUI).</li>
+                            <li class="list-group-item d-flex"><span class="badge bg-primary me-2">Grade 9</span>Python or HTML + CSS + JavaScript.</li>
+                            <li class="list-group-item d-flex"><span class="badge bg-primary me-2">Grade 10</span>Python, JavaScript, Node.js, Java, React (optional).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>2. Project Themes</strong>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <p>Projects must follow a theme provided by the school or organizing team.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>3. Code Originality</strong>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <p>Students may use AI tools for assistance, but the final project must reflect their own understanding and effort.</p>
+                        <p>Do not use existing projects or submit work copied entirely from other sources.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <strong>4. Submission Format</strong>
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Scratch Projects:</strong> Submit a <code>.sb3</code> file or a shareable project link.</li>
+                            <li><strong>Web Projects (HTML/CSS/JS):</strong> Submit as a zipped folder, GitHub link, or Replit link.</li>
+                            <li><strong>Python Projects:</strong> Submit <code>.py</code> files in a zipped folder, or include screenshots and a brief explanation.</li>
+                            <li><strong>Portfolio/Website:</strong> Provide a live URL or zipped folder.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <strong>5. Deadline</strong>
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <p><strong>Submission Deadline:</strong> [Date to be decided by the school/organizers]</p>
+                        <p>Late submissions will not be accepted.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <strong>6. Judging Criteria</strong>
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <table class="table table-bordered">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Criteria</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Creativity</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Functionality</td>
+                                    <td>25%</td>
+                                </tr>
+                                <tr>
+                                    <td>User Interface (UI Design)</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Code Cleanliness / Structure</td>
+                                    <td>15%</td>
+                                </tr>
+                                <tr>
+                                    <td>Idea Presentation / Explanation</td>
+                                    <td>20%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 7 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <strong>7. Presentation</strong>
+                    </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <p>Participants must either submit a short video (1–3 minutes) demonstrating their project or be ready for a live explanation.</p>
+                        <p>The explanation should clearly describe the idea, functionality, and technologies used.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 8 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <strong>8. Groups vs Individual</strong>
+                    </button>
+                </h2>
+                <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Grades 6–8:</strong> Individual participation or teams of 2.</li>
+                            <li><strong>Grades 9–10:</strong> Individual, pairs, or teams of up to 3 members.</li>
+                            <li>Group rules may be adjusted depending on competition needs.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rule 9 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <strong>9. Awards</strong>
+                    </button>
+                </h2>
+                <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Winners will be selected for <strong>1st, 2nd, and 3rd places</strong> in each grade group.</li>
+                            <li><strong>Special awards</strong> may be given for achievements like <em>Best UI Design</em> or <em>Best Innovation</em>.</li>
+                            <li>All participants will receive a <strong>certificate of participation</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-12 text-center">
+        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Register Now</a>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary btn-lg ms-2">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Project Submissions - Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4 text-primary">Project Submissions</h1>
+        <p class="lead mb-4">View and download submitted projects and presentations.</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Filter Options</h5>
+            </div>
+            <div class="card-body">
+                <form id="filterForm" method="GET" class="row g-3">
+                    <div class="col-md-3">
+                        <label for="grade" class="form-label">Grade</label>
+                        <select class="form-select" id="grade" name="grade">
+                            <option value="">All Grades</option>
+                            <option value="6" {% if request.args.get('grade') == '6' %}selected{% endif %}>Grade 6</option>
+                            <option value="7" {% if request.args.get('grade') == '7' %}selected{% endif %}>Grade 7</option>
+                            <option value="8" {% if request.args.get('grade') == '8' %}selected{% endif %}>Grade 8</option>
+                            <option value="9" {% if request.args.get('grade') == '9' %}selected{% endif %}>Grade 9</option>
+                            <option value="10" {% if request.args.get('grade') == '10' %}selected{% endif %}>Grade 10</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="school_id" class="form-label">School</label>
+                        <select class="form-select" id="school_id" name="school_id">
+                            <option value="">All Schools</option>
+                            {% for school in schools %}
+                                <option value="{{ school.id }}" {% if request.args.get('school_id') == school.id|string %}selected{% endif %}>{{ school.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="search" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="search" name="search" placeholder="Name, school or description" value="{{ request.args.get('search', '') }}">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Results ({{ submissions|length }} submissions)</h4>
+            <div>
+                <a href="{{ url_for('export_submissions') }}" class="btn btn-success">
+                    <i class="fas fa-file-csv me-2"></i> Export to CSV
+                </a>
+            </div>
+        </div>
+        
+        {% if submissions %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Participant</th>
+                            <th>Grade</th>
+                            <th>School</th>
+                            <th>Submission Date</th>
+                            <th>Project Files</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for submission in submissions %}
+                        <tr>
+                            <td>{{ submission.id }}</td>
+                            <td>{{ submission.registration.full_name }}</td>
+                            <td>Grade {{ submission.registration.grade }}</td>
+                            <td>{{ submission.registration.school.name }}</td>
+                            <td>{{ submission.submission_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{{ url_for('download_file', filename=submission.code_file_path) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-code me-1"></i> Code
+                                    </a>
+                                    {% if submission.presentation_file_path %}
+                                    <a href="{{ url_for('download_file', filename=submission.presentation_file_path) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-file-powerpoint me-1"></i> Presentation
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="bg-light">
+                                <strong>Project Description:</strong>
+                                <p class="mb-0">{{ submission.description }}</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                No submissions found matching your criteria.
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}

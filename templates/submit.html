@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Project - Coding Competition{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4 text-primary">ඔබගේ ව්‍යාපෘතිය ඉදිරිපත් කරන්න | Submit Your Project</h1>
+        <p class="lead mb-4">කරුණාකර තරඟය සඳහා ඔබගේ ව්‍යාපෘතිය ඉදිරිපත් කිරීමට පහත පෝරමය සම්පූර්ණ කරන්න. තරු ලකුණින් (*) සටහන් කර ඇති කොටස් අනිවාර්ය වේ.<br>Please complete the form below to submit your project for the competition. All fields marked with an asterisk (*) are required.</p>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-4">
+                        <label for="participant" class="form-label">Select Your Name & School *</label>
+                        {{ form.participant(class="form-control") }}
+                        {% if form.participant.errors %}
+                            <div class="text-danger">
+                                {% for error in form.participant.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Please select your registration information from the dropdown.</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="description" class="form-label">Explain Your Project *</label>
+                        {{ form.description(class="form-control", rows="5", placeholder="Describe your project - what does it do, what technologies did you use, what challenges did you overcome?") }}
+                        {% if form.description.errors %}
+                            <div class="text-danger">
+                                {% for error in form.description.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Provide a clear explanation of your project to help the judges understand your work.</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="code_file" class="form-label">Upload Code File *</label>
+                        <input class="form-control" type="file" id="code_file" name="code_file" required>
+                        <div class="form-text">
+                            Accepted formats: .zip, .rar, .7z, .html, .css, .py, .js, .sb3 <br>
+                            Maximum file size: 100MB
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="presentation_file" class="form-label">Upload Presentation (Optional)</label>
+                        <input class="form-control" type="file" id="presentation_file" name="presentation_file">
+                        <div class="form-text">
+                            Accepted formats: .jpg, .png, .pdf, .mp4, .pptx <br>
+                            Maximum file size: 100MB
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info" role="alert">
+                        <h5><i class="fas fa-info-circle me-2"></i> Submission Guidelines</h5>
+                        <ul class="mb-0">
+                            <li>Make sure your code is properly commented and organized.</li>
+                            <li>Include a README file explaining how to run your project.</li>
+                            <li>For Scratch projects, export as .sb3 file.</li>
+                            <li>For web projects, include all necessary files within a zipped folder.</li>
+                            <li>For Python projects, include any required libraries or dependencies in a requirements.txt file.</li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="originalWorkCheck" required>
+                                <label class="form-check-label" for="originalWorkCheck">I confirm this is my original work and follows the competition guidelines *</label>
+                            </div>
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-lg ms-2">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

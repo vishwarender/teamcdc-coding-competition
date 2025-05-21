@@ -1,0 +1,217 @@
+Create a full-stack web application for a Coding Competition organized by Bandaranayake College Gampaha Coding Club.
+
+This application should have the following features:
+
+🔷 Frontend (Home UI)
+A beautiful homepage with 3 main buttons:
+
+Read Rules and Guidelines – Shows all rules (given below).
+
+Registration Form – For students/teams to register.
+
+Submit Your Project – For uploading project files and presentation.
+
+Use a clean UI, mobile responsive, with school branding (Black, Blue & White theme preferred).
+
+📜 Rules Page (Button 1)
+Clicking this should show a Rules & Guidelines page with all the following content (as collapsible accordion or scrollable content):
+
+markdown
+Copy
+Edit
+**Coding Competition – Rules & Guidelines**  
+Organized by Bandaranayake College Coding Club
+
+1. **Age Groups and Programming Languages**  
+- Grade 6: Scratch or Blockly  
+- Grade 7: Scratch or HTML + CSS  
+- Grade 8: HTML/CSS/JS (basic) or Python  
+- Grade 9: Python or Web  
+- Grade 10: Python, JS, Java, Node.js, React (optional)
+
+2. **Project Themes** – Must follow given theme.
+
+3. **Code Originality** – AI allowed, but not full copy-paste.
+
+4. **Submission Format** – .sb3, .zip, GitHub, Replit
+
+5. **Deadline** – [To Be Decided]
+
+6. **Judging Criteria**:  
+| Criteria | Marks |  
+|----------|-------|  
+| Creativity | 20% |  
+| Functionality | 25% |  
+| UI Design | 20% |  
+| Code Cleanliness | 15% |  
+| Idea Presentation | 20% |
+
+7. **Presentation** – 1–3 min video or live.
+
+8. **Groups vs Individual**  
+- Grade 6–8: Solo or team of 2  
+- Grade 9–10: Solo, pair, or 3 members
+
+9. **Awards** – 1st, 2nd, 3rd + special awards.  
+Everyone gets a certificate.
+📝 Registration Form (Button 2)
+Fields:
+
+Full Name
+
+Grade
+
+WhatsApp Number
+
+School (Dropdown from DB)
+
+Team Members Count
+
+Member Details: Name + WhatsApp (up to 10 entries)
+
+Society Name
+
+President Name & Number
+
+Teacher Name & In-Charge Number
+
+Save this data into a SQLite database.
+
+📦 Submit Project (Button 3)
+Go to separate Project Submission Page:
+
+Select Your Name + School (Dropdown from registered users)
+
+Explain your project (Description Box)
+
+Upload code: .zip, .rar, .7z, .html, .css, .py, .js, .sb3
+
+Upload presentation: .jpg, .png, .pdf, .mp4, .pptx
+
+Files saved to /uploads/ and path stored in database.
+
+🛠️ Backend (SQLite + Flask/Django/Express)
+Admin login:
+
+Username: Vishwa1214
+
+Password: bcgvishwa@1214@
+
+Admin Dashboard:
+
+Add Schools (to dropdown list)
+
+View Registered Participants
+
+View Submitted Projects (with download links)
+
+Filter submissions by school/grade
+
+Add or Edit deadlines or rules (optional)
+
+🎖️ Extra Features (Optional but Useful)
+Success alerts after registration or upload
+
+Prevent duplicate registrations
+
+Export registrations & submissions to CSV
+
+Show live countdown to deadline on homepage
+
+Credits in footer:
+
+yaml
+Copy
+Edit
+© 2025 Bandaranayake College Gampaha Coding Club
+⚙️ Tech Stack Suggestion
+Frontend: HTML, CSS, JS (Bootstrap/Tailwind)
+
+Backend: Flask / Express.js / Django
+
+Database: SQLite
+
+File Upload: Store on server, save path in DB
+
+Admin Panel: Custom HTML or use Flask-Admin/Django Admin
+
+
+## **Coding Competition – Rules & Guidelines**
+
+**Organized by Bandaranayake College Coding Club**
+
+---
+
+### **1. Age Groups and Programming Languages**
+
+* **Grade 6**: Projects should be built using visual programming languages such as Scratch or Blockly.
+* **Grade 7**: Scratch or HTML + CSS (via visual tools).
+* **Grade 8**: HTML, CSS, JavaScript (basic) or Python (Turtle/GUI).
+* **Grade 9**: Python or HTML + CSS + JavaScript.
+* **Grade 10**: Python, JavaScript, Node.js, Java, React (optional).
+
+---
+
+### **2. Project Themes**
+
+Projects must follow a theme provided by the school or organizing team.
+
+---
+
+### **3. Code Originality**
+
+Students may use AI tools for assistance, but the final project must reflect their own understanding and effort.
+Do not use existing projects or submit work copied entirely from other sources.
+
+---
+
+### **4. Submission Format**
+
+* **Scratch Projects**: Submit a `.sb3` file or a shareable project link.
+* **Web Projects (HTML/CSS/JS)**: Submit as a zipped folder, GitHub link, or Replit link.
+* **Python Projects**: Submit `.py` files in a zipped folder, or include screenshots and a brief explanation.
+* **Portfolio/Website**: Provide a live URL or zipped folder.
+
+---
+
+### **5. Deadline**
+
+* **Submission Deadline**: \[Date to be decided by the school/organizers]
+* Late submissions will not be accepted.
+
+---
+
+### **6. Judging Criteria**
+
+| **Criteria**                    | **Marks** |
+| ------------------------------- | --------- |
+| Creativity                      | 20%       |
+| Functionality                   | 25%       |
+| User Interface (UI Design)      | 20%       |
+| Code Cleanliness / Structure    | 15%       |
+| Idea Presentation / Explanation | 20%       |
+
+---
+
+### **7. Presentation**
+
+Participants must either submit a short video (1–3 minutes) demonstrating their project or be ready for a live explanation.
+The explanation should clearly describe the idea, functionality, and technologies used.
+
+---
+
+### **8. Groups vs Individual**
+
+* **Grades 6–8**: Individual participation or teams of 2.
+* **Grades 9–10**: Individual, pairs, or teams of up to 3 members.
+* Group rules may be adjusted depending on competition needs.
+
+---
+
+### **9. Awards**
+
+* Winners will be selected for **1st, 2nd, and 3rd places** in each grade group.
+* **Special awards** may be given for achievements like *Best UI Design* or *Best Innovation*.
+* All participants will receive a **certificate of participation**.
+
+
