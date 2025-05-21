@@ -1,14 +1,22 @@
 services:
   - type: web
-    name: repl-nix-workspace
-    env: python
-    plan: free
+    name: python-flask-app
     runtime: python
+    region: oregon  # or frankfurt
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
-    envVars:
-      - key: FLASK_ENV
-        value: production
-      - key: PORT
-        value: 10000  # Change if you're binding to a specific port
+    env: python
+    plan: free
+    branch: main
     autoDeploy: true
+
+    envVars:
+      - key: PORT
+        value: 5000
+
+    healthCheckPath: /
+    numInstances: 1
+
+    ports:
+      - port: 5000
+        protocol: http
