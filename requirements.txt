@@ -1,2 +1,11 @@
 Flask
+Flask-WTF
+Flask-SQLAlchemy
+Flask-Login
 gunicorn
+psycopg2-binary
+Werkzeug
+SQLAlchemy
+WTForms
+email-validator
+mega-py
